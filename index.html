@@ -3,593 +3,449 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Transforme Seus Resultados Agora</title>
+    <title>IA NOTA 1000 - ENEM | Correção Automática de Redações</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
         }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #0a0a0a;
-            color: #fff;
-            overflow-x: hidden;
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(34, 197, 94, 0.4); }
+            50% { box-shadow: 0 0 40px rgba(34, 197, 94, 0.6); }
         }
-
-        .hero {
-            min-height: 100vh;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 20px;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
-            background-size: 50px 50px;
-            animation: moveBackground 20s linear infinite;
-        }
-
-        @keyframes moveBackground {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(50px, 50px); }
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 900px;
-        }
-
-        .badge {
-            display: inline-block;
-            background: rgba(255,255,255,0.2);
-            padding: 8px 20px;
-            border-radius: 50px;
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 20px;
-            backdrop-filter: blur(10px);
-            animation: fadeInDown 0.8s ease;
-        }
-
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        h1 {
-            font-size: 3.5rem;
-            font-weight: 900;
-            line-height: 1.2;
-            margin-bottom: 20px;
-            animation: fadeInUp 0.8s ease 0.2s both;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .subtitle {
-            font-size: 1.3rem;
-            margin-bottom: 30px;
-            opacity: 0.95;
-            animation: fadeInUp 0.8s ease 0.4s both;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background: #fff;
-            color: #667eea;
-            padding: 20px 50px;
-            border-radius: 50px;
-            font-size: 1.2rem;
-            font-weight: 700;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
-            animation: fadeInUp 0.8s ease 0.6s both, pulse 2s ease infinite;
-            cursor: pointer;
-            border: none;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-
-        .cta-button:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 15px 50px rgba(0,0,0,0.4);
-        }
-
-        .guarantee {
-            margin-top: 20px;
-            font-size: 0.9rem;
-            opacity: 0.9;
-            animation: fadeInUp 0.8s ease 0.8s both;
-        }
-
-        .section {
-            padding: 80px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-dark {
-            background: #0a0a0a;
-        }
-
-        .section-light {
-            background: #1a1a1a;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 60px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        .float { animation: float 3s ease-in-out infinite; }
+        .pulse-glow { animation: pulse-glow 2s ease-in-out infinite; }
+        .gradient-text {
+            background: linear-gradient(135deg, #22c55e 0%, #10b981 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-
-        .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-
-        .benefit-card {
-            background: rgba(255,255,255,0.05);
-            padding: 40px;
-            border-radius: 20px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.1);
-            transition: all 0.3s ease;
-        }
-
-        .benefit-card:hover {
-            transform: translateY(-10px);
-            background: rgba(255,255,255,0.08);
-            border-color: #667eea;
-        }
-
-        .benefit-icon {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            display: block;
-        }
-
-        .benefit-title {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            color: #667eea;
-        }
-
-        .benefit-description {
-            opacity: 0.8;
-            line-height: 1.6;
-        }
-
-        .testimonials {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-        }
-
-        .testimonial {
-            background: rgba(255,255,255,0.05);
-            padding: 30px;
-            border-radius: 20px;
-            border-left: 4px solid #667eea;
-        }
-
-        .testimonial-text {
-            font-style: italic;
-            margin-bottom: 20px;
-            line-height: 1.6;
-        }
-
-        .testimonial-author {
-            font-weight: 700;
-            color: #667eea;
-        }
-
-        .testimonial-role {
-            font-size: 0.9rem;
-            opacity: 0.7;
-        }
-
-        .pricing {
-            text-align: center;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            padding: 60px 40px;
-            border-radius: 30px;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .price-old {
-            font-size: 1.5rem;
-            text-decoration: line-through;
-            opacity: 0.7;
-            margin-bottom: 10px;
-        }
-
-        .price-new {
-            font-size: 4rem;
-            font-weight: 900;
-            margin-bottom: 20px;
-        }
-
-        .price-installment {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-            opacity: 0.9;
-        }
-
-        .bonus-list {
-            text-align: left;
-            margin: 30px 0;
-            background: rgba(0,0,0,0.2);
-            padding: 30px;
-            border-radius: 15px;
-        }
-
-        .bonus-item {
-            padding: 15px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .bonus-item:last-child {
-            border-bottom: none;
-        }
-
-        .bonus-item::before {
-            content: '✓';
-            color: #4ade80;
-            font-weight: bold;
-            margin-right: 10px;
-            font-size: 1.3rem;
-        }
-
-        .urgency {
-            background: rgba(239, 68, 68, 0.2);
-            padding: 20px;
-            border-radius: 15px;
-            margin-top: 30px;
-            border: 2px solid #ef4444;
-        }
-
-        .countdown {
-            font-size: 2rem;
-            font-weight: 900;
-            color: #ef4444;
-            margin-top: 10px;
-        }
-
-        .faq {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .faq-item {
-            background: rgba(255,255,255,0.05);
-            margin-bottom: 20px;
-            border-radius: 15px;
-            overflow: hidden;
-        }
-
-        .faq-question {
-            padding: 25px;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 1.1rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .faq-question:hover {
-            background: rgba(255,255,255,0.08);
-        }
-
-        .faq-answer {
-            padding: 0 25px;
-            max-height: 0;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .faq-answer.active {
-            padding: 25px;
-            max-height: 500px;
-        }
-
-        .footer {
-            text-align: center;
-            padding: 40px 20px;
-            background: #000;
-            opacity: 0.7;
-        }
-
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2rem;
-            }
-            
-            .subtitle {
-                font-size: 1rem;
-            }
-            
-            .section-title {
-                font-size: 1.8rem;
-            }
-            
-            .price-new {
-                font-size: 2.5rem;
-            }
+        .screenshot-border {
+            border: 4px solid #22c55e;
+            box-shadow: 0 20px 60px rgba(34, 197, 94, 0.3);
         }
     </style>
 </head>
-<body>
+<body class="bg-gray-900 text-white">
     <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <span class="badge">🎓 RETA FINAL DO ENEM 2025</span>
-            <h1>IA NOTA 1000 - ENEM</h1>
-            <p class="subtitle">A Inteligência Artificial que corrige suas redações 24/7 + Banco com redações nota 1000 para você se inspirar e garantir sua vaga!</p>
-            <a href="https://pay.kirvano.com/8d4beae1-1eb1-4fc3-a929-613ae8d68207"><button class="cta-button" onclick="scrollToPricing()">QUERO TIRAR NOTA 1000 AGORA</button></a>
-            <p class="guarantee">✓ IA disponível 24 horas + Redações nota 1000 de referência</p>
+    <div class="relative overflow-hidden bg-gradient-to-br from-gray-900 via-green-900 to-gray-900">
+        <div class="absolute inset-0 opacity-20">
+            <div class="absolute inset-0" style="background-image: radial-gradient(circle at 2px 2px, rgba(34, 197, 94, 0.15) 1px, transparent 0); background-size: 40px 40px;"></div>
         </div>
-    </section>
-
-    <!-- Benefits Section -->
-    <section class="section section-dark">
-        <h2 class="section-title">Por Que a IA Nota 1000 é Perfeita Para Você?</h2>
-        <div class="benefits-grid">
-            <div class="benefit-card">
-                <span class="benefit-icon">🤖</span>
-                <h3 class="benefit-title">IA Disponível 24/7</h3>
-                <p class="benefit-description">Corrija suas redações a qualquer hora do dia ou da noite! Nossa IA especializada está sempre pronta para te ajudar, sem filas ou espera.</p>
-            </div>
-            <div class="benefit-card">
-                <span class="benefit-icon">📝</span>
-                <h3 class="benefit-title">Correções Detalhadas</h3>
-                <p class="benefit-description">Receba feedback completo sobre todas as 5 competências do ENEM. A IA aponta erros e sugere melhorias específicas para você evoluir.</p>
-            </div>
-            <div class="benefit-card">
-                <span class="benefit-icon">🏆</span>
-                <h3 class="benefit-title">Banco de Redações 1000</h3>
-                <p class="benefit-description">Acesse dezenas de redações nota 1000 reais de alunos aprovados. Inspire-se e aprenda com os melhores exemplos práticos.</p>
-            </div>
-            <div class="benefit-card">
-                <span class="benefit-icon">⚡</span>
-                <h3 class="benefit-title">Treino Ilimitado</h3>
-                <p class="benefit-description">Envie quantas redações quiser! Quanto mais você treina, melhor fica. A IA não tem limite de correções.</p>
-            </div>
-            <div class="benefit-card">
-                <span class="benefit-icon">🎯</span>
-                <h3 class="benefit-title">Foco nas 5 Competências</h3>
-                <p class="benefit-description">A IA avalia exatamente como os corretores do ENEM: domínio da norma, compreensão do tema, argumentação, coesão e proposta de intervenção.</p>
-            </div>
-            <div class="benefit-card">
-                <span class="benefit-icon">⏰</span>
-                <h3 class="benefit-title">Ideal Para Reta Final</h3>
-                <p class="benefit-description">Maximize seu tempo de estudo! Com feedback instantâneo, você evolui muito mais rápido nos últimos dias antes da prova.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section class="section section-light">
-        <h2 class="section-title">Veja o Que Nossos Alunos Conquistaram</h2>
-        <div class="testimonials">
-            <div class="testimonial">
-                <p class="testimonial-text">"Usei a IA Nota 1000 durante toda a reta final e consegui 960 na redação! As correções eram rápidas e muito detalhadas. O banco de redações nota 1000 me ajudou muito a entender o padrão."</p>
-                <p class="testimonial-author">Lucas Mendes</p>
-                <p class="testimonial-role">Aprovado em Medicina - UFMG</p>
-            </div>
-            <div class="testimonial">
-                <p class="testimonial-text">"Treinei mais de 40 redações com a IA. Cada correção me mostrava exatamente onde melhorar. Passei de 700 para 920 pontos em menos de um mês! Valeu muito a pena."</p>
-                <p class="testimonial-author">Beatriz Santos</p>
-                <p class="testimonial-role">Aprovada em Direito - USP</p>
-            </div>
-            <div class="testimonial">
-                <p class="testimonial-text">"A IA está disponível 24h, então eu treinava até de madrugada! Ter acesso às redações nota 1000 foi essencial para eu entender como estruturar minha argumentação. Nota 940!"</p>
-                <p class="testimonial-author">Rafael Costa</p>
-                <p class="testimonial-role">Aprovado em Engenharia - UFRJ</p>
+        
+        <div class="container mx-auto px-4 py-16 relative z-10">
+            <div class="text-center mb-12">
+                <div class="inline-block bg-red-600 text-white px-6 py-2 rounded-full mb-6 font-bold animate-pulse">
+                    🚨 ÚLTIMOS DIAS ANTES DO ENEM! 🚨
+                </div>
+                <h1 class="text-5xl md:text-7xl font-black mb-6">
+                    <span class="gradient-text">IA NOTA 1000</span>
+                    <br/>
+                    <span class="text-3xl md:text-5xl">Sua redação 1000 começa AGORA!</span>
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto">
+                    Correções instantâneas 24/7 • Análise das 5 competências • +100 redações nota 1000 de alunos aprovados
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6">
+                    <a href="https://pay.kirvano.com/8d4beae1-1eb1-4fc3-a929-613ae8d68207" class="pulse-glow bg-green-500 hover:bg-green-600 text-white font-bold py-4 px-8 rounded-lg text-xl transition transform hover:scale-105">
+                        🚀 QUERO TREINAR AGORA
+                    </a>
+                    <div class="text-sm text-gray-400">
+                        ⏱️ Restam apenas <span class="text-red-400 font-bold">72 horas</span> para o ENEM!
+                    </div>
+                </div>
+                
+                <div class="flex justify-center gap-8 text-center">
+                    <div>
+                        <div class="text-3xl font-bold text-green-400">5.000+</div>
+                        <div class="text-sm text-gray-400">Alunos treinando</div>
+                    </div>
+                    <div>
+                        <div class="text-3xl font-bold text-green-400">50.000+</div>
+                        <div class="text-sm text-gray-400">Redações corrigidas</div>
+                    </div>
+                    <div>
+                        <div class="text-3xl font-bold text-green-400">24/7</div>
+                        <div class="text-sm text-gray-400">Disponibilidade</div>
+                    </div>
+                </div>
             </div>
         </div>
-    </section>
+    </div>
 
-    <!-- Pricing Section -->
-    <section class="section section-dark" id="pricing">
-        <h2 class="section-title">Garanta Sua Vaga Agora - Oferta Especial Reta Final</h2>
-        <div class="pricing">
-            <p class="price-old">De R$ 497,00</p>
-            <p class="price-new">R$ 97</p>
-            <p class="price-installment">ou 12x de R$ 9,70</p>
+    <!-- NOVA SEÇÃO: Screenshots do Bot -->
+    <div class="bg-gray-800 py-16">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">
+                    Veja a <span class="gradient-text">IA em Ação</span>
+                </h2>
+                <p class="text-xl text-gray-300">É assim que você vai treinar e melhorar sua redação!</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+                <!-- Screenshot 1 -->
+                <div class="bg-gray-900 rounded-xl p-6 screenshot-border">
+                    <div class="mb-4">
+                        <span class="bg-green-500 text-white px-4 py-2 rounded-full text-sm font-bold">
+                            ✅ CORREÇÃO COMPLETA
+                        </span>
+                    </div>
+                    <img src="botprint.JPG" alt="Correção completa" class="w-full rounded-lg mb-4 bg-gray-700" style="aspect-ratio: 16/10; object-fit: cover;">
+                    <h3 class="text-xl font-bold mb-2">Análise Detalhada das 5 Competências</h3>
+                    <p class="text-gray-400">Receba nota e feedback específico para cada competência do ENEM!</p>
+                    <div class="mt-4 space-y-2">
+                        <div class="flex items-center gap-2 text-sm">
+                            <span class="text-green-400">●</span>
+                            <span>Norma padrão: 180/200</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-sm">
+                            <span class="text-green-400">●</span>
+                            <span>Tema: 200/200</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-sm">
+                            <span class="text-green-400">●</span>
+                            <span>Argumentos: 190/200</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Screenshot 2 -->
+                <div class="bg-gray-900 rounded-xl p-6 screenshot-border">
+                    <div class="mb-4">
+                        <span class="bg-purple-500 text-white px-4 py-2 rounded-full text-sm font-bold">
+                            🎯 PROBLEMAS IDENTIFICADOS
+                        </span>
+                    </div>
+                    <img src="botfoto.JPG" alt="Problemas identificados" class="w-full rounded-lg mb-4 bg-gray-700" style="aspect-ratio: 16/10; object-fit: cover;">
+                    <h3 class="text-xl font-bold mb-2">Identifica Exatamente O Que Melhorar</h3>
+                    <p class="text-gray-400">A IA aponta cada erro e diz como corrigir!</p>
+                    <div class="mt-4 space-y-2">
+                        <div class="flex items-center gap-2 text-sm">
+                            <span class="text-red-400">✗</span>
+                            <span>Falta de dados estatísticos</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-sm">
+                            <span class="text-red-400">✗</span>
+                            <span>Proposta de intervenção incompleta</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-sm">
+                            <span class="text-red-400">✗</span>
+                            <span>Conectivos pouco variados</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Call to action após screenshots -->
+            <div class="text-center mt-12">
+                <p class="text-2xl mb-6 text-yellow-400 font-bold">
+                    👆 Isso é o que VOCÊ vai receber em SEGUNDOS!
+                </p>
+                <a href="https://pay.kirvano.com/8d4beae1-1eb1-4fc3-a929-613ae8d68207" class="inline-block bg-green-500 hover:bg-green-600 text-white font-bold py-4 px-12 rounded-lg text-xl transition transform hover:scale-105">
+                    COMEÇAR A TREINAR AGORA →
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Urgência Section -->
+    <div class="bg-red-900 border-t-4 border-b-4 border-red-500 py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-2xl md:text-3xl font-bold mb-2">⏰ O ENEM É JÁ! NÃO DÁ MAIS PARA PERDER TEMPO!</p>
+            <p class="text-lg text-red-200">Cada redação que você treinar hoje pode ser a diferença entre passar ou não na sua vaga dos sonhos!</p>
+        </div>
+    </div>
+
+    <!-- Benefícios -->
+    <div class="py-20 bg-gray-900">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-16">
+                Por que a <span class="gradient-text">IA Nota 1000</span>?
+            </h2>
             
-            <div class="bonus-list">
-                <div class="bonus-item">IA corretora disponível 24 horas por dia</div>
-                <div class="bonus-item">Correções ilimitadas de redações</div>
-                <div class="bonus-item">Análise detalhada das 5 competências</div>
-                <div class="bonus-item">Banco com +50 redações nota 1000</div>
-                <div class="bonus-item">Exemplos comentados de cada competência</div>
-                <div class="bonus-item">Acesso até 30 dias após o ENEM</div>
-                <div class="bonus-item">BÔNUS: Guia de repertórios atualizados 2025</div>
-                <div class="bonus-item">BÔNUS: Modelos de introdução e conclusão</div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-gray-800 p-8 rounded-xl border-2 border-green-500">
+                    <div class="text-5xl mb-4">⚡</div>
+                    <h3 class="text-2xl font-bold mb-4">Correção Instantânea</h3>
+                    <p class="text-gray-300">Envie sua redação e receba feedback completo em segundos! Sem filas, sem espera, disponível 24h.</p>
+                </div>
+                
+                <div class="bg-gray-800 p-8 rounded-xl border-2 border-green-500">
+                    <div class="text-5xl mb-4">📊</div>
+                    <h3 class="text-2xl font-bold mb-4">5 Competências do ENEM</h3>
+                    <p class="text-gray-300">Análise completa e detalhada de todas as competências. Saiba exatamente sua nota em cada uma!</p>
+                </div>
+                
+                <div class="bg-gray-800 p-8 rounded-xl border-2 border-green-500">
+                    <div class="text-5xl mb-4">🏆</div>
+                    <h3 class="text-2xl font-bold mb-4">+100 Redações Nota 1000 Reais</h3>
+                    <p class="text-gray-300">Acesse mais de 100 exemplos REAIS de redações que tiraram 1000 de alunos aprovados! Aprenda com os melhores e copie as estratégias que funcionam!</p>
+                </div>
+                
+                <div class="bg-gray-800 p-8 rounded-xl border-2 border-green-500">
+                    <div class="text-5xl mb-4">♾️</div>
+                    <h3 class="text-2xl font-bold mb-4">Treino Ilimitado</h3>
+                    <p class="text-gray-300">Envie quantas redações quiser! Quanto mais você treina, melhor fica sua nota.</p>
+                </div>
+                
+                <div class="bg-gray-800 p-8 rounded-xl border-2 border-green-500">
+                    <div class="text-5xl mb-4">🎯</div>
+                    <h3 class="text-2xl font-bold mb-4">Feedback Específico</h3>
+                    <p class="text-gray-300">Não receba apenas a nota: veja ONDE e COMO melhorar cada aspecto da sua redação!</p>
+                </div>
+                
+                <div class="bg-gray-800 p-8 rounded-xl border-2 border-green-500">
+                    <div class="text-5xl mb-4">🚀</div>
+                    <h3 class="text-2xl font-bold mb-4">Evolução Rápida</h3>
+                    <p class="text-gray-300">Com correções instantâneas, você evolui 10x mais rápido nos dias finais antes da prova!</p>
+                </div>
             </div>
+        </div>
+    </div>
+
+    <!-- Como Funciona -->
+    <div class="py-20 bg-gray-800">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-16">
+                Como Funciona?
+            </h2>
             
-            <a href="https://pay.kirvano.com/8d4beae1-1eb1-4fc3-a929-613ae8d68207"><button class="cta-button">QUERO GARANTIR MINHA NOTA 1000</button></a>            
-            <div class="urgency">
-                <p>⚠️ Atenção: Últimos dias antes do ENEM!</p>
-                <p class="countdown" id="countdown">00:00:00</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section class="section section-light">
-        <h2 class="section-title">Perguntas Frequentes</h2>
-        <div class="faq">
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    Como funciona a correção da IA?
-                    <span>+</span>
+            <div class="max-w-4xl mx-auto space-y-8">
+                <div class="flex gap-6 items-start">
+                    <div class="bg-green-500 text-white rounded-full w-12 h-12 flex items-center justify-center text-2xl font-bold flex-shrink-0">1</div>
+                    <div>
+                        <h3 class="text-2xl font-bold mb-2">Acesse o Bot no Telegram</h3>
+                        <p class="text-gray-300 text-lg">Após a compra, você recebe acesso imediato ao bot. É só adicionar e começar!</p>
+                    </div>
                 </div>
-                <div class="faq-answer">
-                    Você escreve sua redação e envia para a plataforma. Em poucos segundos, a IA analisa seu texto e devolve uma correção completa avaliando as 5 competências do ENEM, apontando erros, acertos e sugestões de melhoria.
+                
+                <div class="flex gap-6 items-start">
+                    <div class="bg-green-500 text-white rounded-full w-12 h-12 flex items-center justify-center text-2xl font-bold flex-shrink-0">2</div>
+                    <div>
+                        <h3 class="text-2xl font-bold mb-2">Envie Sua Redação</h3>
+                        <p class="text-gray-300 text-lg">Escreva sua redação e envie para a IA. Pode ser foto ou texto digitado!</p>
+                    </div>
                 </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    Posso enviar quantas redações eu quiser?
-                    <span>+</span>
+                
+                <div class="flex gap-6 items-start">
+                    <div class="bg-green-500 text-white rounded-full w-12 h-12 flex items-center justify-center text-2xl font-bold flex-shrink-0">3</div>
+                    <div>
+                        <h3 class="text-2xl font-bold mb-2">Receba Correção Completa</h3>
+                        <p class="text-gray-300 text-lg">Em segundos, receba sua nota nas 5 competências + feedback detalhado + problemas identificados!</p>
+                    </div>
                 </div>
-                <div class="faq-answer">
-                    Sim! Não há limite de correções. Você pode treinar quantas vezes precisar. Quanto mais você pratica, melhor fica sua escrita e mais preparado você estará para o ENEM.
-                </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    As redações nota 1000 são reais?
-                    <span>+</span>
-                </div>
-                <div class="faq-answer">
-                    Sim! São redações reais de alunos que tiraram nota 1000 no ENEM. Cada redação vem comentada, mostrando por que atingiu a pontuação máxima e o que você pode aprender com ela.
-                </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    Por quanto tempo tenho acesso?
-                    <span>+</span>
-                </div>
-                <div class="faq-answer">
-                    Você tem acesso até 30 dias após a prova do ENEM, tempo mais do que suficiente para treinar bastante na reta final e consolidar sua preparação.
-                </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    A IA realmente ajuda a melhorar minha nota?
-                    <span>+</span>
-                </div>
-                <div class="faq-answer">
-                    Sim! A IA foi treinada com milhares de redações do ENEM e avalia usando os mesmos critérios dos corretores oficiais. Com feedback constante e acesso às melhores redações, você evolui muito mais rápido.
+                
+                <div class="flex gap-6 items-start">
+                    <div class="bg-green-500 text-white rounded-full w-12 h-12 flex items-center justify-center text-2xl font-bold flex-shrink-0">4</div>
+                    <div>
+                        <h3 class="text-2xl font-bold mb-2">Melhore e Repita</h3>
+                        <p class="text-gray-300 text-lg">Use o feedback para melhorar e envie quantas redações quiser. Sem limites!</p>
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
-    <!-- Final CTA -->
-    <section class="section section-dark" style="text-align: center;">
-        <h2 class="section-title">Sua Aprovação Começa Aqui!</h2>
-        <p style="font-size: 1.2rem; margin-bottom: 30px; opacity: 0.9;">Junte-se aos milhares de alunos que estão treinando com IA e conquistando suas vagas</p>
-        <a href="https://pay.kirvano.com/8d4beae1-1eb1-4fc3-a929-613ae8d68207"><button class="cta-button">COMEÇAR A TREINAR AGORA!</button></a>
-        <p style="margin-top: 20px; opacity: 0.7;">🤖 IA disponível 24/7 | 📝 Correções ilimitadas | 🏆 Redações nota 1000</p>
-    </section>
+    <!-- Depoimentos -->
+    <div class="py-20 bg-gray-900">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-16">
+                Alunos que <span class="gradient-text">CONQUISTARAM</span> suas vagas!
+            </h2>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-gray-800 p-8 rounded-xl border-l-4 border-green-500">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center text-3xl">👨‍⚕️</div>
+                        <div>
+                            <div class="font-bold">João Silva</div>
+                            <div class="text-sm text-gray-400">Medicina - UFMG</div>
+                        </div>
+                    </div>
+                    <div class="text-yellow-400 mb-4">⭐⭐⭐⭐⭐</div>
+                    <p class="text-gray-300">"Usei a IA Nota 1000 durante toda a reta final e consegui <span class="text-green-400 font-bold">960 na redação!</span> As correções eram rápidas e muito detalhadas. O banco de redações nota 1000 me ajudou muito a entender o padrão."</p>
+                </div>
+                
+                <div class="bg-gray-800 p-8 rounded-xl border-l-4 border-green-500">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center text-3xl">👩‍⚖️</div>
+                        <div>
+                            <div class="font-bold">Maria Santos</div>
+                            <div class="text-sm text-gray-400">Direito - USP</div>
+                        </div>
+                    </div>
+                    <div class="text-yellow-400 mb-4">⭐⭐⭐⭐⭐</div>
+                    <p class="text-gray-300">"Treinei <span class="text-green-400 font-bold">mais de 40 redações</span> com a IA. Cada correção me mostrava exatamente onde melhorar. Passei de 700 para <span class="text-green-400 font-bold">920 pontos</span> em menos de um mês! Valeu muito a pena."</p>
+                </div>
+                
+                <div class="bg-gray-800 p-8 rounded-xl border-l-4 border-green-500">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center text-3xl">👨‍🔧</div>
+                        <div>
+                            <div class="font-bold">Pedro Costa</div>
+                            <div class="text-sm text-gray-400">Engenharia - UFRJ</div>
+                        </div>
+                    </div>
+                    <div class="text-yellow-400 mb-4">⭐⭐⭐⭐⭐</div>
+                    <p class="text-gray-300">"A IA está disponível <span class="text-green-400 font-bold">24h</span>, então eu treinava até de madrugada! Ter acesso às redações nota 1000 foi essencial para eu entender como estruturar minha argumentação. <span class="text-green-400 font-bold">Nota 940!</span>"</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Garantia -->
+    <div class="py-20 bg-gradient-to-br from-green-900 to-gray-900">
+        <div class="container mx-auto px-4 text-center">
+            <div class="max-w-3xl mx-auto">
+                <div class="text-7xl mb-6">🛡️</div>
+                <h2 class="text-4xl font-bold mb-6">Garantia de 7 Dias</h2>
+                <p class="text-xl text-gray-300 mb-8">
+                    Se por qualquer motivo você não gostar, devolvemos 100% do seu dinheiro. Sem perguntas, sem burocracia.
+                </p>
+                <div class="bg-gray-800 p-6 rounded-xl inline-block">
+                    <p class="text-lg">Você não tem NADA a perder e uma vaga na universidade para GANHAR!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Preço e CTA Final -->
+    <div id="comprar" class="py-20 bg-gray-900">
+        <div class="container mx-auto px-4">
+            <div class="max-w-2xl mx-auto">
+                <div class="bg-gradient-to-br from-green-900 to-gray-800 p-12 rounded-2xl border-4 border-green-500 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-red-600 text-white px-6 py-2 text-sm font-bold transform rotate-12 translate-x-8 -translate-y-2">
+                        ÚLTIMA CHANCE!
+                    </div>
+                    
+                    <h2 class="text-4xl font-bold text-center mb-6">
+                        Comece a Treinar AGORA!
+                    </h2>
+                    
+                    <div class="text-center mb-8">
+                        <div class="text-gray-400 line-through text-2xl mb-2">De R$ 250,00</div>
+                        <div class="text-6xl font-black text-green-400 mb-2">R$ 27,99</div>
+                        <div class="text-xl text-gray-300">ou 6x de <span class="font-bold">R$ 5,40</span></div>
+                    </div>
+                    
+                    <div class="bg-gray-900 p-6 rounded-xl mb-8">
+                        <div class="text-lg font-bold mb-4 text-center">✅ Você vai receber:</div>
+                        <ul class="space-y-3">
+                            <li class="flex items-start gap-3">
+                                <span class="text-green-400 text-xl">✓</span>
+                                <span>Acesso imediato ao bot de correção IA</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-green-400 text-xl">✓</span>
+                                <span>Correções ilimitadas 24/7</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-green-400 text-xl">✓</span>
+                                <span>Análise completa das 5 competências</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-green-400 text-xl">✓</span>
+                                <span>Banco com +100 redações nota 1000 REAIS de alunos aprovados</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-green-400 text-xl">✓</span>
+                                <span>Feedback específico e detalhado</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-green-400 text-xl">✓</span>
+                                <span>Garantia de 7 dias</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <a href="https://pay.kirvano.com/8d4beae1-1eb1-4fc3-a929-613ae8d68207" class="block w-full pulse-glow bg-green-500 hover:bg-green-600 text-white font-bold py-6 px-8 rounded-xl text-2xl text-center transition transform hover:scale-105 mb-4">
+                        🚀 SIM! QUERO GARANTIR MINHA VAGA
+                    </a>
+                    
+                    <p class="text-center text-gray-400 text-sm">
+                        🔒 Pagamento 100% seguro via Kirvano<br/>
+                        ⚡ Acesso liberado em até 5 minutos
+                    </p>
+                </div>
+                
+                <div class="mt-8 text-center">
+                    <div class="bg-red-900 border-2 border-red-500 p-6 rounded-xl">
+                        <p class="text-xl font-bold mb-2">⚠️ ATENÇÃO: Vagas Limitadas!</p>
+                        <p class="text-gray-300">Para garantir a qualidade do serviço, limitamos o número de novos alunos. Não perca essa chance!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="py-20 bg-gray-800">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-16">Perguntas Frequentes</h2>
+            
+            <div class="max-w-3xl mx-auto space-y-6">
+                <div class="bg-gray-900 p-6 rounded-xl">
+                    <h3 class="text-xl font-bold mb-3">❓ A IA corrige como os avaliadores do ENEM?</h3>
+                    <p class="text-gray-300">Sim! A IA foi treinada com milhares de redações do ENEM e avalia exatamente as mesmas 5 competências oficiais.</p>
+                </div>
+                
+                <div class="bg-gray-900 p-6 rounded-xl">
+                    <h3 class="text-xl font-bold mb-3">❓ Quantas redações posso enviar?</h3>
+                    <p class="text-gray-300">Quantas quiser! O acesso é ilimitado. Recomendamos treinar pelo menos 2-3 redações por dia na reta final.</p>
+                </div>
+                
+                <div class="bg-gray-900 p-6 rounded-xl">
+                    <h3 class="text-xl font-bold mb-3">❓ Funciona pelo celular?</h3>
+                    <p class="text-gray-300">Sim! É pelo Telegram, então funciona em qualquer celular, tablet ou computador. Super prático!</p>
+                </div>
+                
+                <div class="bg-gray-900 p-6 rounded-xl">
+                    <h3 class="text-xl font-bold mb-3">❓ E se eu não gostar?</h3>
+                    <p class="text-gray-300">Oferecemos garantia de 7 dias. Se não gostar, devolvemos 100% do seu dinheiro sem perguntas.</p>
+                </div>
+                
+                <div class="bg-gray-900 p-6 rounded-xl">
+                    <h3 class="text-xl font-bold mb-3">❓ Quanto tempo demora a correção?</h3>
+                    <p class="text-gray-300">Segundos! A IA analisa e corrige sua redação em menos de 1 minuto. Feedback instantâneo 24/7.</p>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Footer -->
-    <footer class="footer">
-        <p>© 2025 Todos os direitos reservados</p>
-        <p style="margin-top: 10px; font-size: 0.9rem;">Política de Privacidade | Termos de Uso</p>
+    <footer class="bg-gray-900 border-t border-gray-800 py-12">
+        <div class="container mx-auto px-4 text-center text-gray-400">
+            <p class="mb-4">© 2024 IA Nota 1000 - ENEM. Todos os direitos reservados.</p>
+            <p class="text-sm">Este produto não possui vínculo com o MEC ou INEP. É uma ferramenta de estudos independente.</p>
+        </div>
     </footer>
 
     <script>
-        // Countdown timer
-        function startCountdown() {
-            const countdownEl = document.getElementById('countdown');
-            let hours = 2;
-            let minutes = 30;
-            let seconds = 0;
-
-            setInterval(() => {
-                seconds--;
-                if (seconds < 0) {
-                    seconds = 59;
-                    minutes--;
-                }
-                if (minutes < 0) {
-                    minutes = 59;
-                    hours--;
-                }
-                if (hours < 0) {
-                    hours = 2;
-                    minutes = 30;
-                    seconds = 0;
-                }
-
-                countdownEl.textContent = 
-                    String(hours).padStart(2, '0') + ':' + 
-                    String(minutes).padStart(2, '0') + ':' + 
-                    String(seconds).padStart(2, '0');
-            }, 1000);
-        }
-
-        // FAQ Toggle
-        function toggleFaq(element) {
-            const answer = element.nextElementSibling;
-            const icon = element.querySelector('span');
+        // Countdown timer (exemplo - ajuste a data do ENEM)
+        function updateCountdown() {
+            const examDate = new Date('2024-11-03T00:00:00').getTime();
+            const now = new Date().getTime();
+            const distance = examDate - now;
             
-            answer.classList.toggle('active');
-            icon.textContent = answer.classList.contains('active') ? '−' : '+';
+            if (distance > 0) {
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                
+                const countdownElements = document.querySelectorAll('.countdown');
+                countdownElements.forEach(el => {
+                    el.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+                });
+            }
         }
-
-        // Scroll to pricing
-        function scrollToPricing() {
-            document.getElementById('pricing').scrollIntoView({ 
-                behavior: 'smooth' 
-            });
-        }
-
-        // Initialize countdown
-        startCountdown();
-
-        // Add scroll animation
-        window.addEventListener('scroll', () => {
-            const cards = document.querySelectorAll('.benefit-card, .testimonial, .faq-item');
-            cards.forEach(card => {
-                const cardTop = card.getBoundingClientRect().top;
-                const windowHeight = window.innerHeight;
-                if (cardTop < windowHeight - 100) {
-                    card.style.opacity = '1';
-                    card.style.transform = 'translateY(0)';
-                }
-            });
-        });
-
-        // Initial card animation setup
-        document.querySelectorAll('.benefit-card, .testimonial, .faq-item').forEach(card => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(30px)';
-            card.style.transition = 'all 0.6s ease';
-        });
+        
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
     </script>
 </body>
 </html>
