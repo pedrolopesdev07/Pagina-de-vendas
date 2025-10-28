@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transforme Seus Resultados Agora</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0a0a0a;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: moveBackground 20s linear infinite;
+        }
+
+        @keyframes moveBackground {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            backdrop-filter: blur(10px);
+            animation: fadeInDown 0.8s ease;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            opacity: 0.95;
+            animation: fadeInUp 0.8s ease 0.4s both;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #fff;
+            color: #667eea;
+            padding: 20px 50px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            animation: fadeInUp 0.8s ease 0.6s both, pulse 2s ease infinite;
+            cursor: pointer;
+            border: none;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.4);
+        }
+
+        .guarantee {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            opacity: 0.9;
+            animation: fadeInUp 0.8s ease 0.8s both;
+        }
+
+        .section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-dark {
+            background: #0a0a0a;
+        }
+
+        .section-light {
+            background: #1a1a1a;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 60px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .benefit-card {
+            background: rgba(255,255,255,0.05);
+            padding: 40px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255,255,255,0.08);
+            border-color: #667eea;
+        }
+
+        .benefit-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .benefit-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #667eea;
+        }
+
+        .benefit-description {
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+
+        .testimonials {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial {
+            background: rgba(255,255,255,0.05);
+            padding: 30px;
+            border-radius: 20px;
+            border-left: 4px solid #667eea;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .testimonial-author {
+            font-weight: 700;
+            color: #667eea;
+        }
+
+        .testimonial-role {
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        .pricing {
+            text-align: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 60px 40px;
+            border-radius: 30px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .price-old {
+            font-size: 1.5rem;
+            text-decoration: line-through;
+            opacity: 0.7;
+            margin-bottom: 10px;
+        }
+
+        .price-new {
+            font-size: 4rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+        }
+
+        .price-installment {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .bonus-list {
+            text-align: left;
+            margin: 30px 0;
+            background: rgba(0,0,0,0.2);
+            padding: 30px;
+            border-radius: 15px;
+        }
+
+        .bonus-item {
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .bonus-item:last-child {
+            border-bottom: none;
+        }
+
+        .bonus-item::before {
+            content: '✓';
+            color: #4ade80;
+            font-weight: bold;
+            margin-right: 10px;
+            font-size: 1.3rem;
+        }
+
+        .urgency {
+            background: rgba(239, 68, 68, 0.2);
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 30px;
+            border: 2px solid #ef4444;
+        }
+
+        .countdown {
+            font-size: 2rem;
+            font-weight: 900;
+            color: #ef4444;
+            margin-top: 10px;
+        }
+
+        .faq {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: rgba(255,255,255,0.05);
+            margin-bottom: 20px;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1.1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-question:hover {
+            background: rgba(255,255,255,0.08);
+        }
+
+        .faq-answer {
+            padding: 0 25px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-answer.active {
+            padding: 25px;
+            max-height: 500px;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 40px 20px;
+            background: #000;
+            opacity: 0.7;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .price-new {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <span class="badge">🎓 RETA FINAL DO ENEM 2025</span>
+            <h1>IA NOTA 1000 - ENEM</h1>
+            <p class="subtitle">A Inteligência Artificial que corrige suas redações 24/7 + Banco com redações nota 1000 para você se inspirar e garantir sua vaga!</p>
+            <button class="cta-button" onclick="scrollToPricing()">QUERO TIRAR NOTA 1000 AGORA</button>
+            <p class="guarantee">✓ IA disponível 24 horas + Redações nota 1000 de referência</p>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="section section-dark">
+        <h2 class="section-title">Por Que a IA Nota 1000 é Perfeita Para Você?</h2>
+        <div class="benefits-grid">
+            <div class="benefit-card">
+                <span class="benefit-icon">🤖</span>
+                <h3 class="benefit-title">IA Disponível 24/7</h3>
+                <p class="benefit-description">Corrija suas redações a qualquer hora do dia ou da noite! Nossa IA especializada está sempre pronta para te ajudar, sem filas ou espera.</p>
+            </div>
+            <div class="benefit-card">
+                <span class="benefit-icon">📝</span>
+                <h3 class="benefit-title">Correções Detalhadas</h3>
+                <p class="benefit-description">Receba feedback completo sobre todas as 5 competências do ENEM. A IA aponta erros e sugere melhorias específicas para você evoluir.</p>
+            </div>
+            <div class="benefit-card">
+                <span class="benefit-icon">🏆</span>
+                <h3 class="benefit-title">Banco de Redações 1000</h3>
+                <p class="benefit-description">Acesse dezenas de redações nota 1000 reais de alunos aprovados. Inspire-se e aprenda com os melhores exemplos práticos.</p>
+            </div>
+            <div class="benefit-card">
+                <span class="benefit-icon">⚡</span>
+                <h3 class="benefit-title">Treino Ilimitado</h3>
+                <p class="benefit-description">Envie quantas redações quiser! Quanto mais você treina, melhor fica. A IA não tem limite de correções.</p>
+            </div>
+            <div class="benefit-card">
+                <span class="benefit-icon">🎯</span>
+                <h3 class="benefit-title">Foco nas 5 Competências</h3>
+                <p class="benefit-description">A IA avalia exatamente como os corretores do ENEM: domínio da norma, compreensão do tema, argumentação, coesão e proposta de intervenção.</p>
+            </div>
+            <div class="benefit-card">
+                <span class="benefit-icon">⏰</span>
+                <h3 class="benefit-title">Ideal Para Reta Final</h3>
+                <p class="benefit-description">Maximize seu tempo de estudo! Com feedback instantâneo, você evolui muito mais rápido nos últimos dias antes da prova.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section section-light">
+        <h2 class="section-title">Veja o Que Nossos Alunos Conquistaram</h2>
+        <div class="testimonials">
+            <div class="testimonial">
+                <p class="testimonial-text">"Usei a IA Nota 1000 durante toda a reta final e consegui 960 na redação! As correções eram rápidas e muito detalhadas. O banco de redações nota 1000 me ajudou muito a entender o padrão."</p>
+                <p class="testimonial-author">Lucas Mendes</p>
+                <p class="testimonial-role">Aprovado em Medicina - UFMG</p>
+            </div>
+            <div class="testimonial">
+                <p class="testimonial-text">"Treinei mais de 40 redações com a IA. Cada correção me mostrava exatamente onde melhorar. Passei de 700 para 920 pontos em menos de um mês! Valeu muito a pena."</p>
+                <p class="testimonial-author">Beatriz Santos</p>
+                <p class="testimonial-role">Aprovada em Direito - USP</p>
+            </div>
+            <div class="testimonial">
+                <p class="testimonial-text">"A IA está disponível 24h, então eu treinava até de madrugada! Ter acesso às redações nota 1000 foi essencial para eu entender como estruturar minha argumentação. Nota 940!"</p>
+                <p class="testimonial-author">Rafael Costa</p>
+                <p class="testimonial-role">Aprovado em Engenharia - UFRJ</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="section section-dark" id="pricing">
+        <h2 class="section-title">Garanta Sua Vaga Agora - Oferta Especial Reta Final</h2>
+        <div class="pricing">
+            <p class="price-old">De R$ 497,00</p>
+            <p class="price-new">R$ 97</p>
+            <p class="price-installment">ou 12x de R$ 9,70</p>
+            
+            <div class="bonus-list">
+                <div class="bonus-item">IA corretora disponível 24 horas por dia</div>
+                <div class="bonus-item">Correções ilimitadas de redações</div>
+                <div class="bonus-item">Análise detalhada das 5 competências</div>
+                <div class="bonus-item">Banco com +50 redações nota 1000</div>
+                <div class="bonus-item">Exemplos comentados de cada competência</div>
+                <div class="bonus-item">Acesso até 30 dias após o ENEM</div>
+                <div class="bonus-item">BÔNUS: Guia de repertórios atualizados 2025</div>
+                <div class="bonus-item">BÔNUS: Modelos de introdução e conclusão</div>
+            </div>
+            
+            <button class="cta-button">QUERO GARANTIR MINHA NOTA 1000</button>
+            
+            <div class="urgency">
+                <p>⚠️ Atenção: Últimos dias antes do ENEM!</p>
+                <p class="countdown" id="countdown">00:00:00</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section section-light">
+        <h2 class="section-title">Perguntas Frequentes</h2>
+        <div class="faq">
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    Como funciona a correção da IA?
+                    <span>+</span>
+                </div>
+                <div class="faq-answer">
+                    Você escreve sua redação e envia para a plataforma. Em poucos segundos, a IA analisa seu texto e devolve uma correção completa avaliando as 5 competências do ENEM, apontando erros, acertos e sugestões de melhoria.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    Posso enviar quantas redações eu quiser?
+                    <span>+</span>
+                </div>
+                <div class="faq-answer">
+                    Sim! Não há limite de correções. Você pode treinar quantas vezes precisar. Quanto mais você pratica, melhor fica sua escrita e mais preparado você estará para o ENEM.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    As redações nota 1000 são reais?
+                    <span>+</span>
+                </div>
+                <div class="faq-answer">
+                    Sim! São redações reais de alunos que tiraram nota 1000 no ENEM. Cada redação vem comentada, mostrando por que atingiu a pontuação máxima e o que você pode aprender com ela.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    Por quanto tempo tenho acesso?
+                    <span>+</span>
+                </div>
+                <div class="faq-answer">
+                    Você tem acesso até 30 dias após a prova do ENEM, tempo mais do que suficiente para treinar bastante na reta final e consolidar sua preparação.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    A IA realmente ajuda a melhorar minha nota?
+                    <span>+</span>
+                </div>
+                <div class="faq-answer">
+                    Sim! A IA foi treinada com milhares de redações do ENEM e avalia usando os mesmos critérios dos corretores oficiais. Com feedback constante e acesso às melhores redações, você evolui muito mais rápido.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="section section-dark" style="text-align: center;">
+        <h2 class="section-title">Sua Aprovação Começa Aqui!</h2>
+        <p style="font-size: 1.2rem; margin-bottom: 30px; opacity: 0.9;">Junte-se aos milhares de alunos que estão treinando com IA e conquistando suas vagas</p>
+        <button class="cta-button">COMEÇAR A TREINAR AGORA!</button>
+        <p style="margin-top: 20px; opacity: 0.7;">🤖 IA disponível 24/7 | 📝 Correções ilimitadas | 🏆 Redações nota 1000</p>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2025 Todos os direitos reservados</p>
+        <p style="margin-top: 10px; font-size: 0.9rem;">Política de Privacidade | Termos de Uso</p>
+    </footer>
+
+    <script>
+        // Countdown timer
+        function startCountdown() {
+            const countdownEl = document.getElementById('countdown');
+            let hours = 2;
+            let minutes = 30;
+            let seconds = 0;
+
+            setInterval(() => {
+                seconds--;
+                if (seconds < 0) {
+                    seconds = 59;
+                    minutes--;
+                }
+                if (minutes < 0) {
+                    minutes = 59;
+                    hours--;
+                }
+                if (hours < 0) {
+                    hours = 2;
+                    minutes = 30;
+                    seconds = 0;
+                }
+
+                countdownEl.textContent = 
+                    String(hours).padStart(2, '0') + ':' + 
+                    String(minutes).padStart(2, '0') + ':' + 
+                    String(seconds).padStart(2, '0');
+            }, 1000);
+        }
+
+        // FAQ Toggle
+        function toggleFaq(element) {
+            const answer = element.nextElementSibling;
+            const icon = element.querySelector('span');
+            
+            answer.classList.toggle('active');
+            icon.textContent = answer.classList.contains('active') ? '−' : '+';
+        }
+
+        // Scroll to pricing
+        function scrollToPricing() {
+            document.getElementById('pricing').scrollIntoView({ 
+                behavior: 'smooth' 
+            });
+        }
+
+        // Initialize countdown
+        startCountdown();
+
+        // Add scroll animation
+        window.addEventListener('scroll', () => {
+            const cards = document.querySelectorAll('.benefit-card, .testimonial, .faq-item');
+            cards.forEach(card => {
+                const cardTop = card.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                if (cardTop < windowHeight - 100) {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }
+            });
+        });
+
+        // Initial card animation setup
+        document.querySelectorAll('.benefit-card, .testimonial, .faq-item').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'all 0.6s ease';
+        });
+    </script>
+</body>
+</html>
